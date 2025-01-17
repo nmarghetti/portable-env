@@ -1,0 +1,42 @@
+{
+  "extensions.autoUpdate": true,
+  "editor.tabSize": 2,
+  "editor.insertSpaces": true,
+  "editor.detectIndentation": false,
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true
+  },
+
+  "files.eol": "\n",
+  "files.trimTrailingWhitespace": true,
+  "files.insertFinalNewline": true,
+  "files.associations": {
+    "*.snap": "log",
+    "*.md": "markdown",
+    "*.feature": "feature"
+  },
+  "files.exclude": {
+    "**/*.pyc": true
+  },
+  "search.exclude": {
+    "**/build": true
+  },
+  "[log]": {
+    "files.trimTrailingWhitespace": false,
+    "editor.formatOnSave": false
+  },
+
+  "workbench.colorTheme": "Visual Studio Dark",
+
+  "javascript.preferences.quoteStyle": "single",
+
+  "terminal.integrated.profiles.windows": {
+    "GitBash": {
+      "path": "%APPS_ROOT%/PortableApps/PortableGit/usr/bin/bash.exe",
+      "args": ["--init-file", "${env:HOME}\\.bashrc"]
+    }
+  },
+  "terminal.integrated.defaultProfile.windows": "GitBash",
+  "terminal.integrated.copyOnSelection": true,
+  "terminal.integrated.scrollback": 10000
+}

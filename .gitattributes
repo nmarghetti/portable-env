@@ -1,0 +1,23 @@
+# https://git-scm.com/docs/gitattributes
+# git ls-files --eol
+
+# Normalize all line endings
+*	text=auto
+
+# Ensure shell scripts use LF line endings
+*.awk text eol=lf
+*.sh text eol=lf
+*.bash text eol=lf
+*.zsh text eol=lf
+*.conf eol=lf
+*.py text eol=lf
+sourcetool text eol=lf
+
+# Ensure batch scripts use CRLF line endings
+*.bat text eol=crlf
+*.cmd text eol=crlf
+*.ps1 text eol=crlf
+
+setup.ini text eol=crlf
+setup_user.ini text eol=crlf
+test.ini text eol=crlf
