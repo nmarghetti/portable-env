@@ -47,6 +47,12 @@ Each profile will define its own list of application/settings to install.
      ; Profile to install, it will look for <profile>.ini and settings/profile/<profile>.ini
      ; eg. profile = dev
      profile =
+     ; You can specify where are located the main portable env folder if you want to install it somewhere else
+     ; common-env-apps-root=C:\PortableEnv
+     ; portable-env-path=C:\PortableEnv\Documents\dev\portable-env
+     ; You can also specify only one app and/or only one custom app. It can be useful if you want to install/upgrade only one and be fast.
+     ; app-only = wsl_ubuntu
+     ; custom-app-only = upgrade_portable_env
      [git]
      ; url to clone the repository with user and token, eg. https://<user>:<token>@github.com/owner/portable-env.git
      git-url =
@@ -90,6 +96,11 @@ Each profile will define its own list of application/settings to install.
    You can also install many portable applications from PortableApps.com. To do so, you can just click on `Apps` --> `Get More Apps` --> `By Category` and select the applications you want to add (eg. Chrome, Firefox, Notepad++, OBS).
 
 ### WSL
+
+1. Prerequisites
+
+   - You need administrator rights, it will ask at some point during installation.
+   - You need to be part of `Hyper-V Administrators` group to be able to create VHD drive (it is not created with admin rights). Go to `Computer manager` -> `System Tools` -> `Local Users and Groups` -> `Groups` and add yourself to the `Hyper-V Administrators` group.
 
 1. Installation
 
