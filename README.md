@@ -88,3 +88,58 @@ Each profile will define its own list of application/settings to install.
    ![Portable env](readme/portable_env.png)
 
    You can also install many portable applications from PortableApps.com. To do so, you can just click on `Apps` --> `Get More Apps` --> `By Category` and select the applications you want to add (eg. Chrome, Firefox, Notepad++, OBS).
+
+### WSL
+
+1. Installation
+
+   If you go with the dev profile, it will install WSL Ubuntu-24.04 with 2 VHDs:
+
+   - Ubuntu-24.04 system under `C:\PortableEnv\PortableApps\Ubuntu-24.04\ext4.vhdx`
+   - Your home under `C:\PortableEnv\home\wsl.vhdx` (which can be mounted in any WSL distribution)
+
+   To run it you need to launch it from `WSL Ubuntu-24.04` under PortableApps interface as shown on the picture further above.
+
+1. Configuration
+
+   It is recommander to create file `%HOMEPATH%\.wslconfig` to customize WSL:
+
+   ```ini
+   # https://docs.microsoft.com/en-us/windows/wsl/wsl-config#configure-global-options-with-wslconfig
+   [wsl2]
+   memory=16GB # Limits VM memory in WSL 2 to 16 GB
+   # processors=5 # Select number of virtual processors used by WSL 2 VM
+   ```
+
+1. Migration
+
+   Migrate data from another WSL distribution to this one.
+
+   ```shell
+   # In a powershell ran as administrator
+
+   # Locate the vhd to mount
+   ls $env:LOCALAPPDATA\Packages\CanonicalGroupLimited*\LocalState\ext4.vhdx
+
+   # List wsl distribution
+   wsl --list
+
+   # Mount the disk in the WSL distribution you want, eg. portable-Ubuntu-24.04
+   wsl -d <PUT_THE_WSL_DISTRIBUTION> --mount --vhd <PATH_TO_ext4.vdhx> --bare
+   ```
+
+   ```shell
+   # Under WSL
+
+   # List available device
+   lsblk
+
+   # Create a path where to mount the volume (you can change the name)
+   mkdir -p ~/wsl_ubuntu
+   # Mount the device, eg. /dev/sde
+   sudo mount /dev/<PUT_DEVICE_NAME_FOUND> ~/wsl_ubuntu
+
+   # You can access the data from ~/wsl_ubuntu
+   ls ~/wsl_ubuntu
+   ls ~/wsl_ubuntu/home/$USER
+   ```
