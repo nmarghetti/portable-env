@@ -50,8 +50,8 @@ Each profile will define its own list of application/settings to install.
      ; You can specify where are located the main portable env folder if you want to install it somewhere else
      ; common-env-apps-root=C:\PortableEnv
      ; portable-env-path=C:\PortableEnv\Documents\dev\portable-env
-     ; You can also specify only one app and/or only one custom app. It can be useful if you want to install/upgrade only one and be fast.
-     ; app-only = wsl_ubuntu
+     ; You can also specify to install only some apps and/or custom apps, semi-colon separated. It can be useful if you want to install/upgrade only few faster.
+     ; app-only = wsl_ubuntu:vscode
      ; custom-app-only = upgrade_portable_env
      [git]
      ; url to clone the repository with user and token, eg. https://<user>:<token>@github.com/owner/portable-env.git
