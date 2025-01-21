@@ -132,6 +132,9 @@ Each profile will define its own list of application/settings to install.
    # Locate the vhd to mount
    ls $env:LOCALAPPDATA\Packages\CanonicalGroupLimited*\LocalState\ext4.vhdx
 
+   # You can try to reduce the size of a disk if you are low in space
+   Optimize-VHD -Path <path to .vhdx file> -Mode Full
+
    # List wsl distribution
    wsl --list
 
@@ -154,3 +157,55 @@ Each profile will define its own list of application/settings to install.
    ls ~/wsl_ubuntu
    ls ~/wsl_ubuntu/home/$USER
    ```
+
+1. Troubleshooting
+
+   - Network issue
+
+     Run `hostserver.sh` from WSL, it should print `suceeded` and give you the IP address of your Windows host machine:
+
+     ```txt
+     $ hostserver.sh
+     Checking 127.0.0.1...
+
+     Checking X.X.X.X..
+     Connection to X.X.X.X succeeded
+     X.X.X.X
+     ```
+
+     If you end up with something like that, you have connection issue:
+
+     ```txt
+     $ hostserver.sh
+     Checking 127.0.0.1...
+
+     Checking X.X.X.X...
+     Unable to reach X.X.X.X
+     Not even able to find a route to X.X.X.X
+     ...
+     ```
+
+     In that case you can try to refresh your dns configuration:
+
+     ```shell
+     /opt/wsl_dns.py
+     # Check your access to internet and amadeus network
+     ping -c 1 -w 1 -W 1 archive.ubuntu.com
+     ping -c 1 -w 1 -W 1 google.com
+
+     # Check the content of /etc/resolv.conf
+     cat /etc/resolv.conf
+     ```
+
+   - WSL not starting anymore
+
+     If you end up with an error like `The Windows Subsystem for linux instance has terminated`, you can try to restart your computer.
+
+     If after the restart it still does not work, you will probably have to deactivated and reactivated some Windows feature as follow:
+
+     - Open file explorer with `Control Panel\Programs\Programs and Features` and click on `Turn Windows features on or off`.
+     - Uncheck the following feature: `Hyper-V`, `Virtual Machine Platform` and `Windows Subsystem for Linux`
+     - Restart the computer
+     - Open file explorer with `Control Panel\Programs\Programs and Features` and click on `Turn Windows features on or off`.
+     - Check the following feature: `Hyper-V`, `Virtual Machine Platform` and `Windows Subsystem for Linux`
+     - Restart the computer
