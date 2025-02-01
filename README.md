@@ -11,7 +11,7 @@ Each profile will define its own list of application/settings to install.
 1. **Download archive**
 
    - Create a folder `C:\PortableEnv`.
-   - Download and extract `portable-env.zip` into that folder (ensure to extract only the files and not to have a portable_env folder).
+   - Download and extract [portable_env.zip](https://raw.githubusercontent.com/nmarghetti/portable-env/refs/heads/master/portable_env.zip) into that folder (ensure to extract only the files and not to have a portable_env folder).
 
    You should end up with the following structure:
 
@@ -44,7 +44,7 @@ Each profile will define its own list of application/settings to install.
 
      ```ini
      [install]
-     ; Profile to install, it will look for <profile>.ini and settings/profile/<profile>.ini
+     ; Profile to install, it will look for <profile>.ini and settings/profile/<profile>.ini (eg. gitbash, gitbash-pacman, dev, devops)
      ; eg. profile = dev
      profile =
      ; You can specify where are located the main portable env folder if you want to install it somewhere else
@@ -54,8 +54,7 @@ Each profile will define its own list of application/settings to install.
      ; app-only = wsl_ubuntu:vscode
      ; custom-app-only = upgrade_portable_env
      [git]
-     ; url to clone the repository with user and token, eg. https://<user>:<token>@github.com/owner/portable-env.git
-     git-url =
+     url = https://github.com/nmarghetti/portable-env.git
      ; if left empty, it will be taken from your system
      user =
      ; put your email address
@@ -64,7 +63,11 @@ Each profile will define its own list of application/settings to install.
 
 1. **Launch setup**
 
-   Launch `setup_install.cmd` to install. You would have to run it several times and probably restart the computer if WSL has not been installed yet.
+   Launch `setup_install.cmd` to install.
+
+   In case of error, check logs under `C:\PortableEnvDev\AppData\Temp`.
+
+   You would have to run it several times and probably restart the computer when installing the first time with a profile having WSL.
 
    You should end up with a folder like that:
 
@@ -78,7 +81,6 @@ Each profile will define its own list of application/settings to install.
    ├── settings
    ├── ini.bat
    ├── PortableApps.exe
-   ├── PortableApps.zip
    ├── PortableGit.exe
    ├── setup.cmd
    ├── setup.ini
@@ -93,6 +95,8 @@ Each profile will define its own list of application/settings to install.
 
    ![Portable env](readme/portable_env.png)
 
+   Do not hesistate to launch `Upgrade portable env` from time to time to get updates.
+
    You can also install many portable applications from PortableApps.com. To do so, you can just click on `Apps` --> `Get More Apps` --> `By Category` and select the applications you want to add (eg. Chrome, Firefox, Notepad++, OBS).
 
 ### WSL
@@ -100,6 +104,7 @@ Each profile will define its own list of application/settings to install.
 1. Prerequisites
 
    - You need administrator rights, it will ask at some point during installation.
+   - In a powershell as administrator you need to allow script execution with the command `Set-ExecutionPolicy RemoteSigned`.
    - You need to be part of `Hyper-V Administrators` group to be able to create VHD drive (it is not created with admin rights). Go to `Computer manager` -> `System Tools` -> `Local Users and Groups` -> `Groups` and add yourself to the `Hyper-V Administrators` group.
 
 1. Installation

@@ -166,10 +166,10 @@ if exist "%APPS_ROOT%\PortableApps\PortableGit\bin\bash.exe" (
   if exist "%APPS_ROOT%\home\.ssh\id_rsa.pub" (
     set COMMON_ENV_INSTALL_ONLY_APP=
   ) else (
-    setup.cmd
+    call setup.cmd
   )
 ) else (
-  setup.cmd
+  call setup.cmd
 )
 set COMMON_ENV_INSTALL_ONLY_APP=%BACKUP_COMMON_ENV_INSTALL_ONLY_APP%
 if not exist "%APPS_ROOT%\PortableApps\PortableGit\bin\bash.exe" (
@@ -235,7 +235,4 @@ if "%PORTABLE_ENV_PATH%" EQU "" (
 )
 
 set COMMON_ENV_INSTALL_NO_EXIT=0
-
-setup.cmd
-
-exit 0
+call setup.cmd

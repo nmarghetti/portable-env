@@ -7,17 +7,20 @@ cd "$(dirname "$(readlink -f "$0")")" && cd ../../certificates || {
 
 bundle='ca-bundle.crt'
 
+APPS_ROOT="${COMMON_ENV_INSTALL_APPS_ROOT:-${APPS_ROOT}}"
+download_tarball="$(cygpath -u "$APPS_ROOT"'\Documents\dev\common_env\tools\shell\bin\download_tarball.sh')"
+
 # If cacert.pem does not exist or is older than 666 days, download it
 age="$(($(date +%s) - $(date -r "cacert.pem" +%s 2>/dev/null || echo $(($(date +%s) + 1)))))"
 if [[ -n "$age" && "$age" -gt 0 && "$age" -ge 57542400 ]] || [ ! -f cacert.pem ]; then
   echo "Downloading the certificates bundle from https://curl.se/ca/cacert.pem..."
-  if ! curl -sSLo ./cacert.pem https://curl.se/ca/cacert.pem; then
+  if ! "$download_tarball" -o ./cacert.pem https://curl.se/ca/cacert.pem; then
     echo "Unable to download the certificates bundle from https://curl.se/ca/cacert.pem" >&2
     echo "Please download it and save it in $(cygpath -w "$(pwd)")/cacert.pem" >&2
     rm -f ./cacert.pem
     exit 1
   fi
-  rm "$bundle"
+  rm -f "$bundle"
 fi
 
 [ -f "$bundle" ] && exit 0
