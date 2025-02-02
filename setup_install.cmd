@@ -127,7 +127,7 @@ if "%result%" EQU "" (
 @REM Update setup.ini
 setlocal EnableDelayedExpansion
 set sections=(install git)
-set install_fields=app-only custom-app-only
+set install_fields=app-only custom-app-only log-level
 set git_fields=user email
 for %%S in %sections% do (
   if not "%%S" EQU "" (

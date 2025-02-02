@@ -44,6 +44,8 @@ Each profile will define its own list of application/settings to install.
 
      ```ini
      [install]
+     ; You can specify the log level, it can be DEBUG (debug bash), INFO (save output in log file), NONE (only display output)
+     ; log-level = DEBUG
      ; Profile to install, it will look for <profile>.ini and settings/profile/<profile>.ini (eg. gitbash, gitbash-pacman, dev, devops)
      ; eg. profile = dev
      profile =
