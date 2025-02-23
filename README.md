@@ -45,22 +45,22 @@ Each profile will define its own list of application/settings to install.
      ```ini
      [install]
      ; You can specify the log level, it can be DEBUG (debug bash), INFO (save output in log file), NONE (only display output)
-     ; log-level = DEBUG
+     ; log-level=DEBUG
      ; Profile to install, it will look for <profile>.ini and settings/profile/<profile>.ini (eg. gitbash, gitbash-pacman, dev, devops)
-     ; eg. profile = dev
-     profile =
+     ; eg. profile=dev
+     profile=
      ; You can specify where are located the main portable env folder if you want to install it somewhere else
      ; common-env-apps-root=C:\PortableEnv
      ; portable-env-path=C:\PortableEnv\Documents\dev\portable-env
      ; You can also specify to install only some apps and/or custom apps, semi-colon separated. It can be useful if you want to install/upgrade only few faster.
-     ; app-only = wsl_ubuntu:vscode
-     ; custom-app-only = upgrade_portable_env
+     ; app-only=wsl_ubuntu:vscode
+     ; custom-app-only=upgrade_portable_env
      [git]
-     url = https://github.com/nmarghetti/portable-env.git
+     url=https://github.com/nmarghetti/portable-env.git
      ; if left empty, it will be taken from your system
-     user =
+     user=
      ; put your email address
-     email =
+     email=
      ```
 
 1. **Launch setup**

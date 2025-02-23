@@ -126,9 +126,32 @@ if "%result%" EQU "" (
 
 @REM Update setup.ini
 setlocal EnableDelayedExpansion
-set sections=(install git)
+set sections=(install git gitbash pacman java nvm pyenv lens vscode intellijidea ^
+  wsl-ubuntu wsl-ubuntu-pyenv wsl-ubuntu-kubectl wsl-ubuntu-k9s wsl-ubuntu-helm wsl-ubuntu-minikube wsl-ubuntu-kind ^
+  wsl-ubuntu-gcloud wsl-ubuntu-go wsl-ubuntu-flux wsl-ubuntu-argocd wsl-ubuntu-git-credential-manager wsl-ubuntu-waterfox)
 set install_fields=app-only custom-app-only log-level
 set git_fields=user email
+set gitbash_fields=minimum-version
+set pacman_fields=minimum-version
+set java_fields=version
+set nvm_fields=install
+set pyenv_fields=install
+set lens_fields=minimum-version
+set vscode_fields=minimum-version
+set intellijidea_fields=edition minimum-version
+set wsl-ubuntu_fields=distribution name home-size apt-packages
+set wsl-ubuntu-pyenv_fields=python-version
+set wsl-ubuntu-kubectl_fields=version
+set wsl-ubuntu-k9s_fields=version
+set wsl-ubuntu-helm_fields=version
+set wsl-ubuntu-minikube_fields=version
+set wsl-ubuntu-kind_fields=version
+set wsl-ubuntu-gcloud_fields=version
+set wsl-ubuntu-go_fields=version
+set wsl-ubuntu-flux_fields=version
+set wsl-ubuntu-argocd_fields=version
+set wsl-ubuntu-git-credential-manager_fields=version store
+set wsl-ubuntu-waterfox_fields=version
 for %%S in %sections% do (
   if not "%%S" EQU "" (
     set section=%%S
@@ -138,8 +161,8 @@ for %%S in %sections% do (
       set result=
       %assign% "ini.bat /s !section! /i !field! setup_user.ini 2>nul",result
       if not "!result!" EQU "" (
-        %assign% "ini.bat /s !section! /i !field! /v !result! %COMMON_ENV_INSTALL_SETUP_INI%",result
-        echo Updated [!section!] !field! = !result!
+        call ini.bat /s "!section!" /i "!field!" /v "!result!" %COMMON_ENV_INSTALL_SETUP_INI% >nul
+        echo [!section!] !field!=!result!
       )
     )
   )
