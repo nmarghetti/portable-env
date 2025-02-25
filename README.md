@@ -6,6 +6,16 @@ This project is a wrapper around [common-env](https://github.com/nmarghetti/comm
 
 Each profile will define its own list of application/settings to install.
 
+## Prerequisite
+
+### Admin rights
+
+Some tools, such as WSL, would need you to have admin rights on your machine to install.
+
+### WSL prerequisite
+
+Check WSL section further below.
+
 ## Installation
 
 1. **Download archive**
@@ -101,7 +111,7 @@ Each profile will define its own list of application/settings to install.
 
    You can also install many portable applications from PortableApps.com. To do so, you can just click on `Apps` --> `Get More Apps` --> `By Category` and select the applications you want to add (eg. Chrome, Firefox, Notepad++, OBS).
 
-### WSL
+## WSL
 
 1. Prerequisites
 
